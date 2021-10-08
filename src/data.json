@@ -1,0 +1,48 @@
+[
+  {
+    "region": "South Africa",
+    "country_code": "in",
+    "url": "google.co.in",
+    "languages": [
+      {
+        "name": "Sotho",
+        "code": "en"
+      },
+      {
+        "name": "Zulu",
+        "code": "hi"
+      },
+      {
+        "name": "Xhosa",
+        "code": "xh"
+      },
+      {
+        "name": "Pedi",
+        "code": "pe"
+      }
+    ]
+  },
+  {
+    "region": "United Arab Emirates",
+    "country_code": "ae",
+    "url": "google.ae",
+    "languages": [
+      {
+        "name": "Arabic",
+        "code": "ar"
+      },
+      {
+        "name": "English",
+        "code": "en"
+      },
+      {
+        "name": "Hindi",
+        "code": "hi"
+      },
+      {
+        "name": "Mandarin",
+        "code": "ma"
+      }
+    ]
+  }
+]
