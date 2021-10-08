@@ -13,6 +13,7 @@ import DeviceDetection from "./Detect_Device_Browser4";
 import DynamicFields from "./AddFields_Dynamically_Hooks";
 import AddFields from "./AddFields";
 import Arrays from "./Array";
+import Test from "./Arrays2";
 
 function App() {
   
@@ -32,7 +33,8 @@ function App() {
           <Route path='/eight'  component={DeviceDetector} />
           <Route path='/nine'  component={DeviceDetection} />
           <Route path='/ten'  component={DynamicFields} />
-          <Route path='/eleven'  component={Arrays} />
+          <Route path='/eleven'  component={AddFields} />
+          <Route path='/twelve'  component={Test} />
           </Switch>
       </Router>
      

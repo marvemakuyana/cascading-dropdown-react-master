@@ -8,9 +8,9 @@ function SearchBar({ placeholder, data }) {
   //const [wordEntered, setWordEntered] = useState('');
   const [wordEntered, setWordEntered] = useState([{ books: ''}]);
 
-  const handleFilter = (i, event) => {
+  const handleFilter = (i, e ) => {
    const searchWord = [...wordEntered]
-    searchWord[i][event.target.name] = event.target.value;
+    searchWord[i][e.target.name] = e.target.value;
     //const searchWord = event.target.value;
     setWordEntered(searchWord);
     
