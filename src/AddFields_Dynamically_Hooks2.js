@@ -6,51 +6,37 @@ import CloseIcon from "@material-ui/icons/Close";
 function SearchBar({ placeholder, data }) {
   const [filteredData, setFilteredData] = useState([]);
   //const [wordEntered, setWordEntered] = useState('');
-  const [wordEntered, setWordEntered] = useState([{ books: ''}]);
+  const [wordEntered, setWordEntered] = useState([{ title: ""}]);
 
   const handleFilter = (i, e ) => {
    const searchWord = [...wordEntered]
     searchWord[i][e.target.name] = e.target.value;
-    //const searchWord = event.target.value;
+    
     setWordEntered(searchWord);
+    if(searchWord ==="")
+   { console.log('empty ' ,searchWord)}
+   else{
+    console.log('full' ,searchWord)
+   }
     
     const newFilter = data.filter((value) => {
-        wordEntered.map((data,i) =>{
-            if(data.books.length > 1){
-                return value.title.toLowerCase().includes(searchWord.map((data,i) => {
-                    data.books.toLowerCase()
-                }));
-            }
-        })
-    //   if(wordEntered.map((data,i) => {
-    //       data.books.length > 1
-    //   }))
-    // {
-    //   return value.title.toLowerCase().includes(searchWord.toLowerCase());
-    // }
-     
+       return value.title
     });
-    searchWord.map((data,i) =>{
-        if(data.books === ""){
+    console.log('filtered' ,filteredData)
+    
+    
+    
+
+        if(searchWord === ""){
             setFilteredData([])
         }
         else{
             setFilteredData(newFilter)
         }
-    })
-
-    // if (searchWord.map((data, i) =>{
-    //     data.books === ""
-    // })) {
-    //   setFilteredData([]);
-    // } 
-    // else {
-    //   setFilteredData(newFilter);
-    // }
   };
 
   let addFormFields = () => {
-      setWordEntered([...wordEntered, { books: ''}])
+      setWordEntered([...wordEntered, { title: ''}])
   }
 
   let removeFormFields = (i) => {
@@ -58,6 +44,7 @@ function SearchBar({ placeholder, data }) {
       newFormValues.splice(i, 1);
       setWordEntered(newFormValues);
   }
+
   let handleSubmit = (event) => {
     event.preventDefault();
     alert(JSON.stringify(wordEntered));
@@ -71,14 +58,6 @@ function SearchBar({ placeholder, data }) {
   };
 
   const suggestionSelected = (value) => {
-//    const test = filteredData.map((data, index) => {
-//      if(value === data.title){
-        
-//         console.log('author',data.author)}
-    
-    
-//     })
-let newFormValues = [...value];
     
     setWordEntered(value)
     setFilteredData([])
@@ -87,12 +66,12 @@ let newFormValues = [...value];
   return (
     <div className="search">
         { wordEntered.map((element, index) => (
-                 <div className="searchInputs">
+                 <div className="searchInputs" key={index}>
                  <input
                    type="text"
-                   name='books'
+                   name='title'
                    placeholder={placeholder}
-                   value={element.books || ''}
+                   value={element.title}
                    onChange={e => handleFilter(index, e)}
                  />
                  <div className="searchIcon">
@@ -112,12 +91,16 @@ let newFormValues = [...value];
                </div>
         ))}
        
+       {filteredData.length != 0 && (
           <div className="dataResult">
           
             {filteredData.slice(0, 15).map((value, key) => <p key={key} onClick={() => suggestionSelected(value.title)}>{value.author}, {value.title}</p>)}
         
        
           </div>
+          
+       
+      )}
    
      
    
